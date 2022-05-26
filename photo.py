@@ -10,7 +10,7 @@ st.title('Streamlit Traial')
 
 '''
 ## HP作成練習
-### 画像の表示
+### 画像の表示(高速化)
 '''
 #Grid layout
 #https://www.youtube.com/watch?v=clFrWjiwxL0
