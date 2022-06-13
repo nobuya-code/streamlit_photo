@@ -5,8 +5,12 @@ from PIL import Image
 import time
 import pathlib
 import glob
+import os
 
-st.title('Streamlit Traial') 
+#カレントの下のtempディレクトリを指定
+image_dir = pathlib.Path(r'./台湾アクセサリ')
+
+st.title('Accessory') 
 
 '''
 ## HP作成練習
@@ -24,7 +28,11 @@ st.title('Streamlit Traial')
 # cols = cycle(st.columns(4)) # st.columns here since it is out of beta at the time I'm writing this
 # for idx, filteredImage in enumerate(filteredImages):
 #     next(cols).image(filteredImage, width=150, caption=caption[idx])
-@st.cache
+
+# file upload 
+#https://zenn.dev/ohtaman/articles/streamlit_tips
+
+#@st.cache
 def get_images(image_dir):
     # # globでディレクトリ内のjpgファイルをリストで取得
     images = [str(p) for p in list(image_dir.glob(r'*.jpg'))]
@@ -37,9 +45,21 @@ with st.sidebar:
         #n_photos = st.slider("Number of  photos:", 4, 128, 16)
         n_cols = st.number_input("Number of columns", 2, 8, 4)
         st.form_submit_button(label="Reset images and layout")
+    
+    st.markdown('## 画像を保存する')
+    file = st.file_uploader('画像をアップロードしてください.', type=['jpg', 'jpeg', 'png'])
+    if file:
+        st.markdown(f'{file.name} をアップロードしました.')
+        img_dir = os.path.join(image_dir, file.name)
+        # 画像を保存する
+        with open(img_dir, 'wb') as f:
+            f.write(file.read())
+    
     with st.expander("About this app"):
         st.markdown("It's about accessory :smile:!")
     #st.caption("Source: https://cataas.com/#/")
+    
+    
 
 st.title("Choose your favorite accessory :smile:! ")
 st.caption(
