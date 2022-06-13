@@ -32,7 +32,7 @@ st.title('Accessory')
 # file upload 
 #https://zenn.dev/ohtaman/articles/streamlit_tips
 
-#@st.cache
+@st.cache
 def get_images(image_dir):
     # # globでディレクトリ内のjpgファイルをリストで取得
     images = [str(p) for p in list(image_dir.glob(r'*.jpg'))]
@@ -54,7 +54,8 @@ with st.sidebar:
         # 画像を保存する
         with open(img_dir, 'wb') as f:
             f.write(file.read())
-    
+        images=get_images(image_dir)
+        
     with st.expander("About this app"):
         st.markdown("It's about accessory :smile:!")
     #st.caption("Source: https://cataas.com/#/")
