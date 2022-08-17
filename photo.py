@@ -10,11 +10,13 @@ import os
 #カレントの下のtempディレクトリを指定
 image_dir = pathlib.Path(r'./台湾アクセサリ')
 
-st.title('Accessory') 
-
+#st.title('つやこ') 
+#st.write('<span style="color:purple"><big>つやこ</big></span>',
+#              unsafe_allow_html=True)
+original_title = '<p style="font-family:Courier; color:blue; font-size: 40px;">つやこ</p>'
+st.markdown(original_title, unsafe_allow_html=True)
 '''
-## HP作成練習
-### 画像の表示(高速化)
+### Taiwanese Accessory
 '''
 #Grid layout
 #https://www.youtube.com/watch?v=clFrWjiwxL0
@@ -46,7 +48,7 @@ with st.sidebar:
         n_cols = st.number_input("Number of columns", 2, 8, 4)
         st.form_submit_button(label="Reset images and layout")
     
-    st.markdown('## 画像を保存する')
+    st.markdown('#### 画像を保存する')
     file = st.file_uploader('画像をアップロードしてください.', type=['jpg', 'jpeg', 'png'])
     if file:
         st.markdown(f'{file.name} をアップロードしました.')
@@ -62,7 +64,7 @@ with st.sidebar:
     
     
 
-st.title("Choose your favorite accessory :smile:! ")
+st.subheader("Choose your favorite accessory :smile:! ")
 st.caption(
     "You can display the image in full size by hovering it and clicking the double arrow"
 )
