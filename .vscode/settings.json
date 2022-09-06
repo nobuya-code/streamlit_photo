@@ -1,0 +1,7 @@
+{
+    "jupyter.jupyterServerType": "local",
+    "workbench.editorAssociations": {
+        "*ipynb": "jupyter.notebook"
+    }
+
+}
